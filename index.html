@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1730">
+<title>Phát Đạt Travel | Điều hành tour</title>
+<style>
+:root{--navy:#0b1730;--navy2:#13284b;--blue:#2475f5;--cyan:#54d5e8;--ink:#17233b;--muted:#68758b;--bg:#f3f6fb;--line:#e2e8f2;--white:#fff;--green:#159b72;--red:#d94c58;--gold:#f2b84b;--shadow:0 10px 30px #10234b0c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.5 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{background:linear-gradient(165deg,var(--navy),#142b50);color:white;padding:25px 16px;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;align-items:center;gap:11px;padding:4px 9px 26px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#55d7ee,#2876ff);display:grid;place-items:center;color:#08152b;font-size:21px;font-weight:900;box-shadow:0 8px 22px #2475f544}.brand strong{display:block;font-size:17px;letter-spacing:.2px}.brand small{color:#9db5d9;font-size:10px;letter-spacing:1.2px}.nav-label{color:#7892b7;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:14px 12px 7px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#b7c7df;text-align:left;padding:12px;border-radius:11px;display:flex;gap:12px;align-items:center;transition:.2s}.nav button:hover,.nav button.active{background:#ffffff15;color:white}.nav button.active{box-shadow:inset 3px 0 #55d7ee}.nav .ico{width:21px;text-align:center;font-size:16px}.side-foot{position:absolute;bottom:18px;left:24px;right:24px;color:#8da4c7;font-size:11px;border-top:1px solid #ffffff18;padding-top:14px}.main{min-width:0}.topbar{height:76px;background:#ffffffd9;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:5}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--ink)}.top-actions{display:flex;gap:10px;align-items:center}.avatar{width:35px;height:35px;border-radius:12px;background:#e4edff;color:#2363d4;display:grid;place-items:center;font-weight:800}.content{padding:27px 30px 40px;max-width:1600px;margin:auto}.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:22px}.eyebrow{font-size:11px;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:1.5px}.page-head h1{font-size:27px;letter-spacing:-.8px;margin:4px 0 5px}.sub{color:var(--muted);margin:0}.btn{border:1px solid var(--line);background:white;color:var(--ink);padding:10px 14px;border-radius:10px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn:hover{filter:brightness(.98);transform:translateY(-1px)}.btn.primary{background:linear-gradient(135deg,#2878ff,#1e5ed0);color:white;border-color:#2878ff;box-shadow:0 5px 13px #2475f525}.btn.dark{background:var(--navy);color:white;border-color:var(--navy)}.btn.danger{color:var(--red);border-color:#f3c8cd}.btn.small{padding:7px 10px;font-size:12px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:20px}.stat,.panel{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.stat{padding:18px;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;right:-20px;top:-25px;width:85px;height:85px;border-radius:50%;background:#e9f1ff}.stat-label{color:var(--muted);font-size:12px;font-weight:650}.stat-num{font-size:29px;font-weight:850;letter-spacing:-1px;margin:8px 0 2px}.stat-note{font-size:11px;color:var(--muted)}.stat-icon{position:absolute;right:18px;top:18px;font-size:22px;z-index:1}.panel{padding:21px;margin-bottom:18px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}.panel-head h2{font-size:16px;margin:0}.panel-head p{color:var(--muted);font-size:12px;margin:4px 0 0}.section-title{font-size:12px;font-weight:850;color:#355074;letter-spacing:.8px;text-transform:uppercase;margin:24px 0 13px;padding-bottom:9px;border-bottom:1px solid var(--line)}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.field{min-width:0}.field.wide{grid-column:span 2}.field.full{grid-column:1/-1}.field label{display:block;font-size:12px;font-weight:750;color:#4b5b73;margin-bottom:6px}.field input,.field select,.field textarea,.search{width:100%;border:1px solid #dce4ef;background:#fbfcff;border-radius:9px;padding:10px 11px;color:var(--ink);outline:none;min-width:0}.field input:focus,.field select:focus,.field textarea:focus,.search:focus{border-color:#6ba1ff;box-shadow:0 0 0 3px #2475f515;background:white}.field textarea{min-height:88px;resize:vertical}.field input[readonly]{background:#eef3fb;color:#526783}.hint{font-size:11px;color:var(--muted);margin-top:5px}.form-actions{display:flex;gap:9px;justify-content:flex-end;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.search{width:min(280px,100%)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:760px}th{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:#687991;background:#f7f9fd;text-align:left;padding:12px 13px;white-space:nowrap}td{padding:13px;border-top:1px solid #edf1f7;vertical-align:top}tbody tr:hover{background:#fbfcff}.muted{color:var(--muted)}.strong{font-weight:800}.tag{display:inline-flex;border-radius:99px;padding:4px 9px;font-size:11px;font-weight:800;background:#eef3fa;color:#52637a;white-space:nowrap}.tag.green{background:#e3f8ef;color:#13845f}.tag.blue{background:#e7f0ff;color:#2466cf}.tag.orange{background:#fff1dc;color:#a66a06}.tag.red{background:#ffe8eb;color:#c03b4a}.empty{padding:35px 15px;text-align:center;color:var(--muted)}.empty .big{font-size:30px;margin-bottom:8px}.actions{display:flex;gap:6px}.mini{font-size:11px;color:var(--muted)}.cards-2{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.tour-card{border:1px solid var(--line);border-radius:12px;padding:15px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}.tour-mark{width:42px;height:42px;border-radius:12px;background:#eaf2ff;color:#286bd8;display:grid;place-items:center;font-size:18px;flex-shrink:0}.tour-card h3{font-size:14px;margin:0 0 5px}.tour-card p{font-size:12px;color:var(--muted);margin:0 0 8px}.tour-card .grow{flex:1;min-width:0}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quick{border:1px solid var(--line);border-radius:12px;padding:15px;text-align:left;background:#fff}.quick:hover{border-color:#9abaff;background:#f8fbff}.quick span{font-size:22px;display:block;margin-bottom:10px}.quick b{display:block;font-size:12px}.quick small{color:var(--muted);font-size:11px}.footer{text-align:center;padding:24px 10px 6px;color:#718098;font-size:12px}.footer strong{color:#31496d}.footer .motto{letter-spacing:.8px;font-weight:800;color:#2872dd;margin-bottom:5px}.photo-box{border:1px dashed #b9c8dd;border-radius:10px;padding:13px;background:#fafcff}.photo-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.photo-preview img{width:105px;height:68px;object-fit:cover;border-radius:7px;border:1px solid var(--line)}.hidden{display:none!important}.print-head{display:none}.notice{background:#fff7e7;border:1px solid #f6dfaa;padding:12px 14px;border-radius:10px;color:#805b16;font-size:12px;margin-bottom:15px}.receipt{max-width:850px;margin:auto}.receipt-title{text-align:center;margin:0 0 18px}.receipt-title h2{margin:0;font-size:24px}.receipt-title p{margin:3px;color:var(--muted)}.receipt-total{background:#f1f6ff;border:1px solid #dce8ff;border-radius:12px;padding:15px;display:flex;justify-content:space-between;align-items:center;margin-top:15px}.receipt-total strong{font-size:22px;color:#1f62d4}.itinerary-block{margin-bottom:20px}.itinerary-block h3{font-size:14px;background:#edf3ff;padding:10px 12px;border-radius:8px;color:#244c88}.detail-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.detail-item{border-bottom:1px solid var(--line);padding:8px 0}.detail-item small{display:block;color:var(--muted);font-size:11px}.detail-item b{font-size:13px;overflow-wrap:anywhere}.mobile-menu{display:none}
+@media(max-width:1000px){.app{grid-template-columns:210px 1fr}.content{padding:22px 18px}.topbar{padding:0 18px}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.cards-2{grid-template-columns:1fr}}
+@media(max-width:680px){.app{display:block}.sidebar{position:fixed;z-index:20;left:-270px;width:250px;transition:left .2s}.sidebar.open{left:0}.mobile-menu{display:inline-flex}.topbar{height:64px;padding:0 13px}.content{padding:19px 12px 28px}.page-head{display:block}.page-head .toolbar{margin-top:14px}.page-head h1{font-size:23px}.form-grid{grid-template-columns:1fr}.field.wide,.field.full{grid-column:1}.stats{gap:9px}.stat{padding:14px}.stat-num{font-size:24px}.panel{padding:15px}.quick-grid{grid-template-columns:repeat(2,1fr)}.form-actions{flex-wrap:wrap}.form-actions .btn{flex:1}.top-actions .top-text{display:none}}
+@media print{body{background:white;color:#111}.sidebar,.topbar,.no-print,.footer,.page-head .toolbar{display:none!important}.app{display:block}.content{padding:0;max-width:none}.panel,.stat{box-shadow:none;border:0;padding:0}.print-head{display:block;text-align:center;margin-bottom:20px}.print-head h1{margin:0}.print-head p{margin:3px}.stats{grid-template-columns:repeat(4,1fr)}.stat{border:1px solid #ddd;padding:10px}.stat:after,.stat-icon{display:none}.table-wrap{overflow:visible;border:0}table{min-width:0;font-size:10px}th,td{padding:6px;border:1px solid #ddd}th{background:#eee!important}.form-grid{gap:8px}.field input,.field select,.field textarea{border:0;background:white;padding:0}.panel{break-inside:avoid}.itinerary-block{break-inside:avoid}.receipt{max-width:none}.btn{display:none!important}a{color:#111;text-decoration:none}}
+</style>
+</head>
+<body>
+document.getElementById('menuBtn').addEventListener('click',()=>document
+ 
+.getElementById('sidebar').classList.toggle('open'));
+document.getElementById('exportQuick').addEventListener('click',exportData);
+
+function updateStats(){
+  const ids={statTours:db.tours.length,statGuests:db.guests.length,statVehicles:db.vehicles.length,statReceipts:db.receipts.length,overviewGuests:db.guests.length+' khách',overviewRooms:db.rooms.length+' phòng',overviewRestaurants:db.restaurants.length+' địa điểm'};
+  Object.entries(ids).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.textContent=value});
+  const recent=document.getElementById('recentTours');
+  if(recent){
+    recent.innerHTML=db.tours.length?db.tours.slice(-4).reverse().map(t=>`<div class="tour-card"><div class="tour-mark">✈</div><div class="grow"><h3>${esc(t.name)}</h3><p>${esc(t.code)} · ${dateFmt(t.start)} – ${dateFmt(t.end)}</p><span class="tag blue">${esc(t.status||'Đang chuẩn bị')}</span></div><button class="btn small" onclick="editTour('${t.id}')">Mở</button></div>`).join(''):'<div class="empty"><div class="big">✈️</div>Chưa có tour nào.<br>Hãy tạo tour đầu tiên.</div>';
+  }
+}
+function exportData(){
+  const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='phatdat-travel-backup.json';a.click();URL.revokeObjectURL(a.href);
+}
+function importData(file){
+  const r=new FileReader();
+  r.onload=()=>{try{db=Object.assign(emptyData(),JSON.parse(r.result));saveData();go('dashboard');alert('Đã nhập dữ liệu thành công.')}catch(e){alert('File dữ liệu không hợp lệ.')}};
+  r.readAsText(file);
+}
+function field(label,name,value='',type='text',extra=''){
+  return `<div class="field"><label>${label}</label><input name="${name}" type="${type}" value="${esc(value)}" ${extra}></div>`;
+}
+function area(label,name,value=''){
+  return `<div class="field full"><label>${label}</label><textarea name="${name}">${esc(value)}</textarea></div>`;
+}
+function selectField(label,name,options,value=''){
+  return `<div class="field"><label>${label}</label><select name="${name}">${options.map(o=>`<option value="${esc(o)}" ${o===value?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`;
+}
+function pageHead(title,sub,button=''){
+  return `<div class="page-head"><div><div class="eyebrow">PHÁT ĐẠT TRAVEL</div><h1>${title}</h1><p class="sub">${sub}</p></div><div class="toolbar">${button}</div></div>`;
+}
+function panel(title,body,subtitle=''){
+  return `<section class="panel"><div class="panel-head"><div><h2>${title}</h2>${subtitle?`<p>${subtitle}</p>`:''}</div></div>${body}</section>`;
+}
+function table(headers,rows){
+  return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows||`<tr><td colspan="${headers.length}"><div class="empty">Chưa có dữ liệu</div></td></tr>`}</tbody></table></div>`;
+}
+function actionButtons(type,id){
+  return `<div class="actions"><button class="btn small" onclick="editItem('${type}','${id}')">Sửa</button><button class="btn small danger" onclick="deleteItem('${type}','${id}')">Xóa</button></div>`;
+}
+function deleteItem(type,id){
+  if(!confirm('Bạn có chắc muốn xóa dữ liệu này?'))return;
+  db[type]=db[type].filter(x=>x.id!==id);saveData();renderPage(currentPage);
+}
+function editItem(type,id){
+  const map={tours:'editTour',guests:'editGuest',vehicles:'editVehicle',rooms:'editRoom',restaurants:'editRestaurant',receipts:'editReceipt'};
+  if(map[type])window[map[type]](id);
+}
+let currentPage='dashboard';
+function renderPage(page){
+  currentPage=page;
+  const c=document.getElementById('content');
+  if(page==='dashboard'){c.innerHTML=dashboardHTML();updateStats();return}
+  if(page==='tours'){c.innerHTML=toursHTML();return}
+  if(page==='guests'){c.innerHTML=guestsHTML();return}
+  if(page==='vehicles'){c.innerHTML=vehiclesHTML();return}
+  if(page==='hotels'){c.innerHTML=hotelsHTML();return}
+  if(page==='restaurants'){c.innerHTML=restaurantsHTML();return}
+  if(page==='receipts'){c.innerHTML=receiptsHTML();return}
+  if(page==='itinerary'){c.innerHTML=itineraryHTML();return}
+  if(page==='backup'){c.innerHTML=backupHTML();return}
+}
+function dashboardHTML(){
+  return `<div class="page-head"><div><div class="eyebrow">TRAVEL OPERATIONS</div><h1>Tổng quan điều hành</h1><p class="sub">Quản lý mọi thông tin chuyến đi của Phát Đạt Travel.</p></div><button class="btn primary" onclick="newTour()">＋ Tạo tour mới</button></div>
+  <div class="stats">
+  <div class="stat"><div class="stat-label">Tổng số tour</div><div class="stat-num">${db.tours.length}</div></div>
+  <div class="stat"><div class="stat-label">Khách tham gia</div><div class="stat-num">${db.guests.length}</div></div>
+  <div class="stat"><div class="stat-label">Phương tiện</div><div class="stat-num">${db.vehicles.length}</div></div>
+  <div class="stat"><div class="stat-label">Phiếu thu / chi</div><div class="stat-num">${db.receipts.length}</div></div></div>
+  ${panel('Tour gần đây',db.tours.slice(-5).reverse().map(t=>`<div class="tour-card"><div class="tour-mark">✈</div><div class="grow"><h3>${esc(t.name)}</h3><p>${esc(t.code)} · ${dateFmt(t.start)} – ${dateFmt(t.end)}</p></div><button class="btn small" onclick="editTour('${t.id}')">Mở</button></div>`).join('')||'<div class="empty">Chưa có tour nào.</div>')}
+  <div class="footer"><div class="motto">KẾT NỐI HÀNH TRÌNH, LAN TOẢ GIÁ TRỊ</div>© Thuộc bản quyền Phát Đạt Travel × PĐ Production</div>`;
+}
+
+function newTour(){editTour(null)}
+function editTour(id){
+  const t=id?db.tours.find(x=>x.id===id):null;
+  const code=t?t.code:nextCode('PDT26-',db.tours);
+  document.getElementById('content').innerHTML=pageHead(t?'Sửa thông tin tour':'Tạo tour mới','Nhập thông tin chuyến đi và lịch trình cơ bản.')+`
+  <section class="panel">
+  <form id="tourForm">
+    <div class="section-title">Thông tin chung</div>
+    <div class="form-grid">
+      ${field('Mã tour','code',code,'text','readonly')}
+      ${field('Tên tour *','name',t?.name||'')}
+      ${selectField('Trạng thái','status',['Đang chuẩn bị','Đã xác nhận','Đang diễn ra','Hoàn thành','Đã hủy'],t?.status||'Đang chuẩn bị')}
+      ${field('Ngày khởi hành','start',t?.start||today(),'date')}
+      ${field('Ngày kết thúc','end',t?.end||'','date')}
+      ${field('Số lượng khách dự kiến','capacity',t?.capacity||'','number')}
+      ${field('Điểm xuất phát','origin',t?.origin||'')}
+      ${field('Điểm đến','destination',t?.destination||'')}
+      ${field('Tên trưởng đoàn','leader',t?.leader||'')}
+      ${field('Số điện thoại trưởng đoàn','phone',t?.phone||'','tel')}
+      ${field('Giá tour mỗi khách (VNĐ)','price',t?.price||'','number')}
+      ${field('Tên đơn vị tổ chức','organizer',t?.organizer||'Phát Đạt Travel')}
+      ${area('Ghi chú / yêu cầu đặc biệt','notes',t?.notes||'')}
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn" onclick="go('tours')">Quay lại</button>
+      <button type="submit" class="btn primary">Lưu thông tin tour</button>
+    </div>
+  </form></section>`;
+  document.getElementById('tourForm').onsubmit=e=>{
+    e.preventDefault();
+    const d=Object.fromEntries(new FormData(e.target));
+    if(!d.name.trim()){alert('Vui lòng nhập tên tour.');return}
+    if(d.end&&d.start&&d.end<d.start){alert('Ngày kết thúc không được trước ngày khởi hành.');return}
+    if(t)Object.assign(t,d);
+    else db.tours.push({id:uid(),...d,createdAt:new Date().toISOString()});
+    saveData();go('tours');alert('Đã lưu thông tin tour.');
+  };
+}
+function toursHTML(){
+  const rows=db.tours.map(t=>`<tr>
+    <td><span class="tag blue">${esc(t.code)}</span></td>
+    <td><b>${esc(t.name)}</b><div class="mini">${esc(t.origin||'')} → ${esc(t.destination||'')}</div></td>
+    <td>${dateFmt(t.start)}<div class="mini">đến ${dateFmt(t.end)}</div></td>
+    <td>${esc(t.capacity||0)} khách</td>
+    <td>${money(t.price)}</td>
+    <td><span class="tag ${t.status==='Hoàn thành'?'green':t.status==='Đã hủy'?'red':'blue'}">${esc(t.status||'Đang chuẩn bị')}</span></td>
+    <td>${actionButtons('tours',t.id)}</td>
+  </tr>`).join('');
+  return pageHead('Quản lý tour','Tạo và theo dõi các chuyến đi của công ty.',`<button class="btn primary" onclick="newTour()">＋ Tạo tour mới</button>`)+`
+  <section class="panel"><div class="toolbar" style="margin-bottom:15px">
+  <input class="search" id="tourSearch" placeholder="Tìm theo tên hoặc mã tour...">
+  <button class="btn" onclick="exportCSV('tours')">⇩ Xuất CSV</button></div>
+  <div id="tourTable">${table(['Mã tour','Thông tin tour','Khởi hành','Số khách','Giá tour','Trạng thái','Thao tác'],rows)}</div></section>`;
+}
+function editGuest(id){
+  const g=id?db.guests.find(x=>x.id===id):null;
+  document.getElementById('content').innerHTML=pageHead(g?'Sửa hồ sơ khách':'Thêm khách tham gia','Thông tin cá nhân và phân công tour.')+`
+  <section class="panel"><form id="guestForm">
+  <div class="section-title">Thông tin cá nhân</div><div class="form-grid">
+  ${field('Họ và tên *','name',g?.name||'')}
+  ${field('Ngày sinh','birth',g?.birth||'','date')}
+  ${selectField('Giới tính','gender',['Nam','Nữ','Khác'],g?.gender||'Nam')}
+  ${field('Số điện thoại','phone',g?.phone||'','tel')}
+  ${field('Số CCCD','cccd',g?.cccd||'')}
+  ${field('Ngày cấp CCCD','issueDate',g?.issueDate||'','date')}
+  ${field('Địa chỉ','address',g?.address||'')}
+  ${field('Mã tour','tourCode',g?.tourCode||'')}
+  ${field('Phòng ở','room',g?.room||'')}
+  ${field('Người ở cùng','roommates',g?.roommates||'')}
+  ${field('Số tiền đã đóng (VNĐ)','paid',g?.paid||'','number')}
+  ${selectField('Trạng thái thanh toán',['Chưa thanh toán','Đã cọc','Đã thanh toán'],'',g?.payment||'Chưa thanh toán')}
+  ${area('Ghi chú','notes',g?.notes||'')}
+  </div>
+  <div class="section-title">Ảnh CCCD hai mặt</div>
+  <div class="form-grid">
+    <div class="field"><label>Ảnh mặt trước</label><div class="photo-box"><input type="file" id="frontPhoto" accept="image/*"><div class="photo-preview" id="frontPreview">${g?.front?`<img src="${g.front}" alt="CCCD mặt trước">`:''}</div></div></div>
+    <div class="field"><label>Ảnh mặt sau</label><div class="photo-box"><input type="file" id="backPhoto" accept="image/*"><div class="photo-preview" id="backPreview">${g?.back?`<img src="${g.back}" alt="CCCD mặt sau">`:''}</div></div></div>
+  </div>
+  <p class="hint">Ảnh giấy tờ là dữ liệu nhạy cảm. Chỉ lưu trên thiết bị đáng tin cậy và không chia sẻ file sao lưu cho người khác.</p>
+  <div class="form-actions"><button type="button" class="btn" onclick="go('guests')">Quay lại</button><button class="btn primary" type="submit">Lưu hồ sơ khách</button></div>
+  </form></section>`;
+  let front=g?.front||'',back=g?.back||'';
+  function readPhoto(input,preview,cb){
+    input.onchange=()=>{
+      const f=input.files[0];if(!f)return;
+      if(f.size>2*1024*1024){alert('Ảnh tối đa 2 MB để tránh đầy bộ nhớ.');input.value='';return}
+      const r=new FileReader();r.onload=()=>{cb(r.result);preview.innerHTML=`<img src="${r.result}" alt="Ảnh xem trước">`};r.readAsDataURL(f);
+    };
+  }
+  readPhoto(document.getElementById('frontPhoto'),document.getElementById('frontPreview'),v=>front=v);
+  readPhoto(document.getElementById('backPhoto'),document.getElementById('backPreview'),v=>back=v);
+  document.getElementById('guestForm').onsubmit=e=>{
+    e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
+    if(!d.name.trim()){alert('Vui lòng nhập họ tên khách.');return}
+    d.front=front;d.back=back;
+    if(g)Object.assign(g,d);else db.guests.push({id:uid(),...d});
+    try{saveData();go('guests');alert('Đã lưu hồ sơ khách.')}
+    catch(err){alert('Không đủ bộ nhớ để lưu. Hãy giảm kích thước ảnh CCCD hoặc sao lưu rồi xóa bớt dữ liệu.')}
+  };
+}
+function newGuest(){editGuest(null)}
+function guestsHTML(){
+  const rows=db.guests.map(g=>`<tr>
+  <td><b>${esc(g.name)}</b><div class="mini">${esc(g.phone||'')}</div></td>
+  <td>${esc(g.birth||'—')}</td><td>${esc(g.cccd||'—')}</td>
+  <td>${esc(g.tourCode||'—')}</td><td>${esc(g.room||'—')}</td>
+  <td>${money(g.paid)}</td>
+  <td><span class="tag ${g.payment==='Đã thanh toán'?'green':g.payment==='Đã cọc'?'orange':'red'}">${esc(g.payment||'Chưa thanh toán')}</span></td>
+  <td>${actionButtons('guests',g.id)}</td></tr>`).join('');
+  return pageHead('Khách tham gia','Quản lý hồ sơ, CCCD, phòng ở và thanh toán.',`<button class="btn primary" onclick="newGuest()">＋ Thêm khách</button>`)+`
+  <section class="panel"><div class="toolbar" style="margin-bottom:15px">
+  <input class="search" id="guestSearch" placeholder="Tìm tên, CCCD, mã tour...">
+  <button class="btn" onclick="exportCSV('guests')">⇩ Xuất CSV</button></div>
+  ${table(['Họ tên / Liên hệ','Ngày sinh','CCCD','Mã tour','Phòng','Đã đóng','Thanh toán','Thao tác'],rows)}</section>`;
+}
+ 
+function newVehicle(){editVehicle(null)}
+function editVehicle(id){
+  const v=id?db.vehicles.find(x=>x.id===id):null;
+  document.getElementById('content').innerHTML=pageHead(v?'Sửa thông tin xe':'Thêm phương tiện','Quản lý xe, tài xế và sức chứa.')+`
+  <section class="panel"><form id="vehicleForm"><div class="form-grid">
+  ${field('Tên xe / nhà xe *','name',v?.name||'')}
+  ${field('Biển số xe','plate',v?.plate||'')}
+  ${field('Loại xe','type',v?.type||'Xe du lịch')}
+  ${field('Số chỗ','seats',v?.seats||'','number')}
+  ${field('Tên tài xế','driver',v?.driver||'')}
+  ${field('Số điện thoại tài xế','phone',v?.phone||'','tel')}
+  ${field('Ngày sử dụng','date',v?.date||'','date')}
+  ${field('Mã tour phân công','tourCode',v?.tourCode||'')}
+  ${field('Chi phí thuê xe (VNĐ)','cost',v?.cost||'','number')}
+  ${area('Ghi chú','notes',v?.notes||'')}
+  </div><div class="form-actions"><button type="button" class="btn" onclick="go('vehicles')">Quay lại</button><button class="btn primary">Lưu phương tiện</button></div></form></section>`;
+  document.getElementById('vehicleForm').onsubmit=e=>{
+    e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
+    if(!d.name.trim()){alert('Vui lòng nhập tên xe hoặc nhà xe.');return}
+    if(v)Object.assign(v,d);else db.vehicles.push({id:uid(),...d});
+    saveData();go('vehicles');alert('Đã lưu phương tiện.');
+  };
+}
+function vehiclesHTML(){
+  const rows=db.vehicles.map(v=>`<tr><td><b>${esc(v.name)}</b><div class="mini">${esc(v.type||'')}</div></td>
+  <td>${esc(v.plate||'—')}</td><td>${esc(v.seats||'—')} chỗ</td>
+  <td>${esc(v.driver||'—')}<div class="mini">${esc(v.phone||'')}</div></td>
+  <td>${esc(v.tourCode||'—')}</td><td>${money(v.cost)}</td>
+  <td>${actionButtons('vehicles',v.id)}</td></tr>`).join('');
+  return pageHead('Quản lý xe','Thông tin nhà xe, biển số, tài xế và chi phí.',`<button class="btn primary" onclick="newVehicle()">＋ Thêm xe</button>`)+
+  panel('Danh sách phương tiện',table(['Tên xe / loại xe','Biển số','Sức chứa','Tài xế','Mã tour','Chi phí','Thao tác'],rows));
+}
+
+function newRoom(){editRoom(null)}
+function editRoom(id){
+  const r=id?db.rooms.find(x=>x.id===id):null;
+  document.getElementById('content').innerHTML=pageHead(r?'Sửa thông tin phòng':'Thêm khách sạn / phòng','Khai báo địa điểm lưu trú và người ở cùng.')+`
+  <section class="panel"><form id="roomForm"><div class="form-grid">
+  ${field('Tên khách sạn *','hotel',r?.hotel||'')}
+  ${field('Địa chỉ khách sạn','address',r?.address||'')}
+  ${field('Số điện thoại','phone',r?.phone||'','tel')}
+  ${field('Số phòng','roomNo',r?.roomNo||'')}
+  ${field('Loại phòng','type',r?.type||'Phòng đôi')}
+  ${field('Số giường','beds',r?.beds||'','number')}
+  ${field('Mã tour','tourCode',r?.tourCode||'')}
+  ${field('Tên người ở','occupants',r?.occupants||'')}
+  ${field('Ngày nhận phòng','checkin',r?.checkin||'','date')}
+  ${field('Ngày trả phòng','checkout',r?.checkout||'','date')}
+  ${field('Giá phòng / đêm (VNĐ)','price',r?.price||'','number')}
+  ${area('Ghi chú','notes',r?.notes||'')}
+  </div><div class="form-actions"><button type="button" class="btn" onclick="go('hotels')">Quay lại</button><button class="btn primary">Lưu phòng</button></div></form></section>`;
+  document.getElementById('roomForm').onsubmit=e=>{
+    e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
+    if(!d.hotel.trim()){alert('Vui lòng nhập tên khách sạn.');return}
+    if(r)Object.assign(r,d);else db.rooms.push({id:uid(),...d});
+    saveData();go('hotels');alert('Đã lưu thông tin lưu trú.');
+  };
+}
+function hotelsHTML(){
+  const rows=db.rooms.map(r=>`<tr><td><b>${esc(r.hotel)}</b><div class="mini">${esc(r.address||'')}</div></td>
+  <td>${esc(r.roomNo||'—')}</td><td>${esc(r.type||'—')} · ${esc(r.beds||'—')} giường</td>
+  <td>${esc(r.occupants||'—')}</td><td>${esc(r.tourCode||'—')}</td>
+  <td>${dateFmt(r.checkin)} – ${dateFmt(r.checkout)}</td><td>${money(r.price)}</td>
+  <td>${actionButtons('rooms',r.id)}</td></tr>`).join('');
+  return pageHead('Khách sạn & phòng','Quản lý khách sạn, phòng và danh sách người lưu trú.',`<button class="btn primary" onclick="newRoom()">＋ Thêm phòng</button>`)+
+  panel('Danh sách phòng lưu trú',table(['Khách sạn / địa chỉ','Phòng','Loại phòng','Người ở','Mã tour','Thời gian','Giá / đêm','Thao tác'],rows));
+}
+
+function newRestaurant(){editRestaurant(null)}
+function editRestaurant(id){
+  const r=id?db.restaurants.find(x=>x.id===id):null;
+  document.getElementById('content').innerHTML=pageHead(r?'Sửa địa điểm ăn uống':'Thêm nhà hàng / bữa ăn','Quản lý bữa ăn theo ngày và lịch trình tour.')+`
+  <section class="panel"><form id="restaurantForm"><div class="form-grid">
+  ${field('Tên nhà hàng *','name',r?.name||'')}
+  ${field('Địa chỉ','address',r?.address||'')}
+  ${field('Số điện thoại','phone',r?.phone||'','tel')}
+  ${field('Ngày ăn','date',r?.date||'','date')}
+  ${field('Giờ ăn','time',r?.time||'','time')}
+  ${selectField('Bữa ăn','meal',['Bữa sáng','Bữa trưa','Bữa tối','Ăn nhẹ','Tiệc gala'],r?.meal||'Bữa trưa')}
+  ${field('Mã tour','tourCode',r?.tourCode||'')}
+  ${field('Số suất ăn','quantity',r?.quantity||'','number')}
+  ${field('Giá mỗi suất (VNĐ)','price',r?.price||'','number')}
+  ${area('Thực đơn / ghi chú','menu',r?.menu||'')}
+  </div><div class="form-actions"><button type="button" class="btn" onclick="go('restaurants')">Quay lại</button><button class="btn primary">Lưu địa điểm</button></div></form></section>`;
+  document.getElementById('restaurantForm').onsubmit=e=>{
+    e.preventDefault();const d=Object.fromEntries(new FormData(e.target));
+    if(!d.name.trim()){alert('Vui lòng nhập tên nhà hàng.');return}
+    if(r)Object.assign(r,d);else db.restaurants.push({id:uid(),...d});
+    saveData();go('restaurants');alert('Đã lưu nhà hàng / bữa ăn.');
+  };
+}
+function restaurantsHTML(){
+  const rows=db.restaurants.map(r=>`<tr><td><b>${esc(r.name)}</b><div class="mini">${esc(r.address||'')}</div></td>
+  <td>${dateFmt(r.date)}<div class="mini">${esc(r.time||'')}</div></td>
+  <td><span class="tag orange">${esc(r.meal||'Bữa ăn')}</span></td>
+  <td>${esc(r.tourCode||'—')}</td><td>${esc(r.quantity||0)} suất</td>
+  <td>${money(Number(r.price||0)*Number(r.quantity||0))}</td>
+  <td>${actionButtons('restaurants',r.id)}</td></tr>`).join('');
+  return pageHead('Nhà hàng & bữa ăn','Lưu thông tin địa điểm, giờ ăn và số suất.',`<button class="btn primary" onclick="newRestaurant()">＋ Thêm nhà hàng</button>`)+
+  panel('Danh sách nhà hàng / bữa ăn',table(['Địa điểm','Ngày / giờ','Bữa ăn','Mã tour','Số suất','Tổng chi phí','Thao tác'],rows));
+}
+
+function newItinerary(){
+  editItinerary(null);
+}
+
+function editItinerary(id){
+  const item=id?db.itineraries.find(x=>x.id===id):null;
+  const tours=db.tours;
+  const body=`
+    <form id="itineraryForm" class="form-grid">
+      ${field('Tên lịch trình','name',item?.name||'')}
+      ${selectField('Tour','tourId',tours.map(t=>({value:t.id,label:t.code+' - '+t.name})),item?.tourId||'')}
+      ${field('Ngày đi','date',item?.date||today(),'date')}
+      ${field('Giờ xuất phát','time',item?.time||'07:00','time')}
+      ${field('Địa điểm','place',item?.place||'')}
+      ${field('Phương tiện / xe','vehicle',item?.vehicle||'')}
+      ${field('Khách sạn / phòng','hotel',item?.hotel||'')}
+      ${field('Người phụ trách','person',item?.person||'')}
+      ${area('Nội dung hoạt động','content',item?.content||'')}
+      ${area('Ghi chú','note',item?.note||'')}
+      <div class="form-actions">
+        <button type="button" class="btn" onclick="renderPage('itinerary')">Hủy</button>
+        <button class="btn primary" type="submit">Lưu lịch trình</button>
+      </div>
+    </form>`;
+  showModal(item?'Sửa lịch trình':'Thêm lịch trình',body);
+  document.getElementById('itineraryForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=new FormData(e.target);
+    const data=Object.fromEntries(f.entries());
+    if(!data.name.trim()){
+      alert('Vui lòng nhập tên lịch trình');
+      return;
+    }
+    if(item) Object.assign(item,data);
+    else db.itineraries.push({id:uid(),...data});
+    saveData();
+    closeModal();
+    renderPage('itinerary');
+  });
+}
+
+function itineraryHTML(){
+  return pageHead('Lịch trình tổng','Quản lý lịch trình, giờ xuất phát, phương tiện và nơi lưu trú',
+    `<button class="btn primary" onclick="newItinerary()">＋ Thêm lịch trình</button>`)
+    +panel('Danh sách lịch trình',`
+      ${table(
+        ['Ngày','Giờ','Tên lịch trình','Địa điểm','Xe / phương tiện','Khách sạn / phòng','Phụ trách','Thao tác'],
+        db.itineraries.map(i=>[
+          dateFmt(i.date),esc(i.time||'—'),esc(i.name),
+          esc(i.place||'—'),esc(i.vehicle||'—'),
+          esc(i.hotel||'—'),esc(i.person||'—'),
+          actionButtons('itineraries',i.id)
+        ])
+      )}
+    `);
+}
+
+function newReceipt(){
+  editReceipt(null);
+}
+
+function editReceipt(id){
+  const item=id?db.receipts.find(x=>x.id===id):null;
+  const body=`
+    <form id="receiptForm" class="form-grid">
+      ${field('Ngày giao dịch','date',item?.date||today(),'date')}
+      ${selectField('Loại giao dịch','type',[
+        {value:'Thu',label:'Thu tiền'},
+        {value:'Chi',label:'Chi tiền'}
+      ],item?.type||'Thu')}
+      ${field('Nội dung','content',item?.content||'')}
+      ${field('Người nộp / nhận','person',item?.person||'')}
+      ${field('Số tiền (VNĐ)','amount',item?.amount||'','number')}
+      ${selectField('Liên kết tour','tourId',
+        db.tours.map(t=>({value:t.id,label:t.code+' - '+t.name})),
+        item?.tourId||'')}
+      ${area('Ghi chú','note',item?.note||'')}
+      <div class="form-actions">
+        <button type="button" class="btn" onclick="renderPage('receipts')">Hủy</button>
+        <button class="btn primary" type="submit">Lưu giao dịch</button>
+      </div>
+    </form>`;
+  showModal(item?'Sửa phiếu thu / chi':'Thêm phiếu thu / chi',body);
+  document.getElementById('receiptForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const data=Object.fromEntries(new FormData(e.target).entries());
+    data.amount=Number(data.amount||0);
+    if(!data.content.trim()){
+      alert('Vui lòng nhập nội dung giao dịch');
+      return;
+    }
+    if(item) Object.assign(item,data);
+    else db.receipts.push({id:uid(),...data});
+    saveData();
+    closeModal();
+    renderPage('receipts');
+  });
+}
+
+function receiptsHTML(){
+  const income=db.receipts
+    .filter(r=>r.type==='Thu')
+    .reduce((sum,r)=>sum+Number(r.amount||0),0);
+  const expense=db.receipts
+    .filter(r=>r.type==='Chi')
+    .reduce((sum,r)=>sum+Number(r.amount||0),0);
+
+  return pageHead('Phiếu thu / chi','Theo dõi giao dịch thu tiền và chi phí tour',
+    `<button class="btn primary" onclick="newReceipt()">＋ Thêm giao dịch</button>`)
+    +`<div class="stats-grid">
+      <div class="stat-card"><span>Tổng thu</span><strong>${money(income)}</strong></div>
+      <div class="stat-card"><span>Tổng chi</span><strong>${money(expense)}</strong></div>
+      <div class="stat-card"><span>Chênh lệch</span><strong>${money(income-expense)}</strong></div>
+    </div>`
+    +panel('Lịch sử giao dịch',table(
+      ['Ngày','Loại','Nội dung','Người nộp / nhận','Số tiền','Ghi chú','Thao tác'],
+      db.receipts.map(r=>[
+        dateFmt(r.date),
+        r.type==='Thu'
+          ?'<span class="status success">Thu</span>'
+          :'<span class="status danger">Chi</span>',
+        esc(r.content),
+        esc(r.person||'—'),
+        money(r.amount),
+        esc(r.note||'—'),
+        actionButtons('receipts',r.id)
+      ])
+    ));
+}
+
+function backupHTML(){
+  return pageHead(
+    'Sao lưu dữ liệu',
+    'Xuất dữ liệu để lưu trữ hoặc khôi phục khi cần'
+  )
+  +panel('Sao lưu và khôi phục',`
+    <div class="backup-grid">
+      <div class="backup-card">
+        <h3>📦 Sao lưu dữ liệu</h3>
+        <p>Tải toàn bộ dữ liệu tour, khách hàng, xe, phòng, nhà hàng, lịch trình và phiếu thu chi thành file JSON.</p>
+        <button class="btn primary" onclick="exportData()">Tải bản sao lưu JSON</button>
+      </div>
+      <div class="backup-card">
+        <h3>♻️ Khôi phục dữ liệu</h3>
+        <p>Chọn file JSON đã sao lưu trước đó để khôi phục dữ liệu.</p>
+        <input type="file" id="backupFile" accept=".json,application/json">
+        <button class="btn" onclick="restoreBackup()">Khôi phục dữ liệu</button>
+      </div>
+      <div class="backup-card">
+        <h3>📄 Xuất danh sách</h3>
+        <p>Xuất dữ liệu của từng mục thành file CSV để mở bằng Excel.</p>
+        <select id="csvType">
+          <option value="tours">Danh sách tour</option>
+          <option value="guests">Danh sách khách</option>
+          <option value="vehicles">Danh sách xe</option>
+          <option value="rooms">Khách sạn và phòng</option>
+          <option value="restaurants">Nhà hàng</option>
+          <option value="itineraries">Lịch trình</option>
+          <option value="receipts">Phiếu thu chi</option>
+        </select>
+        <button class="btn" onclick="exportCSV()">Xuất CSV</button>
+      </div>
+    </div>
+    <div class="notice">
+      <strong>Lưu ý:</strong> Dữ liệu hiện được lưu trên trình duyệt đang sử dụng.
+      Hãy sao lưu định kỳ. File sao lưu có thể chứa thông tin cá nhân của khách,
+      vì vậy không chia sẻ công khai.
+    </div>
+  `);
+}
+
+function exportData(){
+  const payload={
+    app:'PHAT DAT TRAVEL',
+    version:3,
+    exportedAt:new Date().toISOString(),
+    data:db
+  };
+  downloadFile(
+    JSON.stringify(payload,null,2),
+    'phat-dat-travel-backup-'+today()+'.json',
+    'application/json;charset=utf-8'
+  );
+}
+
+function restoreBackup(){
+  const input=document.getElementById('backupFile');
+  const file=input?.files?.[0];
+
+  if(!file){
+    alert('Vui lòng chọn file JSON trước.');
+    return;
+  }
+
+  if(!confirm('Khôi phục sẽ thay thế dữ liệu hiện tại. Bạn đã sao lưu dữ liệu hiện tại chưa?')){
+    return;
+  }
+
+  const reader=new FileReader();
+
+  reader.onload=()=>{
+    try{
+      const parsed=JSON.parse(reader.result);
+      const incoming=parsed.data||parsed;
+
+      const required=[
+        'tours','guests','vehicles','rooms',
+        'restaurants','itineraries','receipts'
+      ];
+
+      for(const key of required){
+        if(!Array.isArray(incoming[key])){
+          throw new Error('File thiếu danh sách hợp lệ: '+key);
+        }
+      }
+
+      db=Object.assign(emptyData(),incoming);
+      localStorage.setItem(KEY,JSON.stringify(db));
+      updateStats();
+      go('dashboard');
+      alert('Khôi phục dữ liệu thành công.');
+    }catch(err){
+      alert('Không thể khôi phục file này. Hãy kiểm tra file JSON sao lưu.');
+    }
+  };
+
+  reader.onerror=()=>{
+    alert('Không đọc được file. Vui lòng thử lại.');
+  };
+
+  reader.readAsText(file);
+}
+
+function downloadFile(content,filename,mime){
+  const blob=new Blob(['\ufeff',content],{type:mime});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+
+  a.href=url;
+  a.download=filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function csvEscape(value){
+  let text=String(value??'');
+
+  if(/^[=+\-@]/.test(text)){
+    text="'"+text;
+  }
+
+  return '"'+text.replace(/"/g,'""')+'"';
+}
+
+function exportCSV(){
+  const type=document.getElementById('csvType')?.value;
+  const rows=db[type];
+
+  if(!Array.isArray(rows)){
+    alert('Không tìm thấy danh sách cần xuất.');
+    return;
+  }
+
+  if(rows.length===0){
+    alert('Danh sách này chưa có dữ liệu.');
+    return;
+  }
+
+  const keys=[...new Set(rows.flatMap(row=>Object.keys(row)))];
+  const csv=[
+    keys.map(csvEscape).join(','),
+    ...rows.map(row=>keys.map(key=>{
+      const value=row[key];
+      return csvEscape(
+        value&&typeof value==='object'
+          ?JSON.stringify(value)
+          :value
+      );
+    }).join(','))
+  ].join('\r\n');
+
+  downloadFile(
+    csv,
+    'phat-dat-travel-'+type+'-'+today()+'.csv',
+    'text/csv;charset=utf-8'
+  );
+}
+
+/* ===== MODAL THÊM / SỬA ===== */
+
+function ensureModal(){
+  if(document.getElementById('appModal')) return;
+
+  const wrapper=document.createElement('div');
+  wrapper.id='appModal';
+  wrapper.className='modal-overlay';
+  wrapper.style.display='none';
+
+  wrapper.innerHTML=`
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modalTitle">Thông tin</h2>
+        <button type="button" class="btn" onclick="closeModal()">✕</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  `;
+
+  document.body.appendChild(wrapper);
+
+  wrapper.addEventListener('click',e=>{
+    if(e.target===wrapper) closeModal();
+  });
+}
+
+function showModal(title,body){
+  ensureModal();
+
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalBody').innerHTML=body;
+  document.getElementById('appModal').style.display='flex';
+}
+
+function closeModal(){
+  const modal=document.getElementById('appModal');
+  if(modal) modal.style.display='none';
+}
+
+/* ===== TÌM KIẾM ===== */
+
+function filterTable(inputId,tableId){
+  const input=document.getElementById(inputId);
+  const tableEl=document.getElementById(tableId);
+
+  if(!input||!tableEl) return;
+
+  const query=input.value.toLowerCase().trim();
+
+  tableEl.querySelectorAll('tbody tr').forEach(row=>{
+    row.style.display=row.textContent.toLowerCase().includes(query)
+      ?''
+      :'none';
+  });
+}
+
+/* ===== BẢO ĐẢM HIỂN THỊ CÁC TRANG ===== */
+
+function renderPage(page){
+  currentPage=page;
+
+  const renderers={
+    dashboard:dashboardHTML,
+    tours:toursHTML,
+    guests:guestsHTML,
+    vehicles:vehiclesHTML,
+    hotels:hotelsHTML,
+    restaurants:restaurantsHTML,
+    itinerary:itineraryHTML,
+    receipts:receiptsHTML,
+    backup:backupHTML
+  };
+
+  const content=document.getElementById('mainContent');
+  if(!content) return;
+
+  content.innerHTML=(renderers[page]||dashboardHTML)();
+
+  document.querySelectorAll('.nav button').forEach(button=>{
+    button.classList.toggle('active',button.dataset.page===page);
+  });
+
+  const crumb=document.getElementById('crumb');
+  if(crumb) crumb.textContent=pageNames[page]||page;
+
+  updateStats();
+}
+
+/* ===== XỬ LÝ ESC ĐỂ ĐÓNG MODAL ===== */
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeModal();
+});
+
+/* ===== KHỞI CHẠY WEBSITE ===== */
+
+ensureModal();
+updateStats();
+go('dashboard');
+</script>
+</body>
+</html>
+
