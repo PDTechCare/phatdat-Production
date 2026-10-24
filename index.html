@@ -15,11 +15,8 @@
 </style>
 </head>
 <body>
-document.getElementById('menuBtn').addEventListener('click',()=>document
- 
-.getElementById('sidebar').classList.toggle('open'));
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
 document.getElementById('exportQuick').addEventListener('click',exportData);
-
 function updateStats(){
   const ids={statTours:db.tours.length,statGuests:db.guests.length,statVehicles:db.vehicles.length,statReceipts:db.receipts.length,overviewGuests:db.guests.length+' khách',overviewRooms:db.rooms.length+' phòng',overviewRestaurants:db.restaurants.length+' địa điểm'};
   Object.entries(ids).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.textContent=value});
@@ -90,7 +87,6 @@ function dashboardHTML(){
   ${panel('Tour gần đây',db.tours.slice(-5).reverse().map(t=>`<div class="tour-card"><div class="tour-mark">✈</div><div class="grow"><h3>${esc(t.name)}</h3><p>${esc(t.code)} · ${dateFmt(t.start)} – ${dateFmt(t.end)}</p></div><button class="btn small" onclick="editTour('${t.id}')">Mở</button></div>`).join('')||'<div class="empty">Chưa có tour nào.</div>')}
   <div class="footer"><div class="motto">KẾT NỐI HÀNH TRÌNH, LAN TOẢ GIÁ TRỊ</div>© Thuộc bản quyền Phát Đạt Travel × PĐ Production</div>`;
 }
-
 function newTour(){editTour(null)}
 function editTour(id){
   const t=id?db.tours.find(x=>x.id===id):null;
@@ -206,8 +202,7 @@ function guestsHTML(){
   <button class="btn" onclick="exportCSV('guests')">⇩ Xuất CSV</button></div>
   ${table(['Họ tên / Liên hệ','Ngày sinh','CCCD','Mã tour','Phòng','Đã đóng','Thanh toán','Thao tác'],rows)}</section>`;
 }
- 
-function newVehicle(){editVehicle(null)}
+ function newVehicle(){editVehicle(null)}
 function editVehicle(id){
   const v=id?db.vehicles.find(x=>x.id===id):null;
   document.getElementById('content').innerHTML=pageHead(v?'Sửa thông tin xe':'Thêm phương tiện','Quản lý xe, tài xế và sức chứa.')+`
@@ -239,7 +234,6 @@ function vehiclesHTML(){
   return pageHead('Quản lý xe','Thông tin nhà xe, biển số, tài xế và chi phí.',`<button class="btn primary" onclick="newVehicle()">＋ Thêm xe</button>`)+
   panel('Danh sách phương tiện',table(['Tên xe / loại xe','Biển số','Sức chứa','Tài xế','Mã tour','Chi phí','Thao tác'],rows));
 }
-
 function newRoom(){editRoom(null)}
 function editRoom(id){
   const r=id?db.rooms.find(x=>x.id===id):null;
@@ -274,7 +268,6 @@ function hotelsHTML(){
   return pageHead('Khách sạn & phòng','Quản lý khách sạn, phòng và danh sách người lưu trú.',`<button class="btn primary" onclick="newRoom()">＋ Thêm phòng</button>`)+
   panel('Danh sách phòng lưu trú',table(['Khách sạn / địa chỉ','Phòng','Loại phòng','Người ở','Mã tour','Thời gian','Giá / đêm','Thao tác'],rows));
 }
-
 function newRestaurant(){editRestaurant(null)}
 function editRestaurant(id){
   const r=id?db.restaurants.find(x=>x.id===id):null;
@@ -308,11 +301,9 @@ function restaurantsHTML(){
   return pageHead('Nhà hàng & bữa ăn','Lưu thông tin địa điểm, giờ ăn và số suất.',`<button class="btn primary" onclick="newRestaurant()">＋ Thêm nhà hàng</button>`)+
   panel('Danh sách nhà hàng / bữa ăn',table(['Địa điểm','Ngày / giờ','Bữa ăn','Mã tour','Số suất','Tổng chi phí','Thao tác'],rows));
 }
-
 function newItinerary(){
   editItinerary(null);
 }
-
 function editItinerary(id){
   const item=id?db.itineraries.find(x=>x.id===id):null;
   const tours=db.tours;
@@ -349,7 +340,6 @@ function editItinerary(id){
     renderPage('itinerary');
   });
 }
-
 function itineraryHTML(){
   return pageHead('Lịch trình tổng','Quản lý lịch trình, giờ xuất phát, phương tiện và nơi lưu trú',
     `<button class="btn primary" onclick="newItinerary()">＋ Thêm lịch trình</button>`)
@@ -365,11 +355,9 @@ function itineraryHTML(){
       )}
     `);
 }
-
 function newReceipt(){
   editReceipt(null);
 }
-
 function editReceipt(id){
   const item=id?db.receipts.find(x=>x.id===id):null;
   const body=`
@@ -407,7 +395,6 @@ function editReceipt(id){
     renderPage('receipts');
   });
 }
-
 function receiptsHTML(){
   const income=db.receipts
     .filter(r=>r.type==='Thu')
@@ -415,8 +402,7 @@ function receiptsHTML(){
   const expense=db.receipts
     .filter(r=>r.type==='Chi')
     .reduce((sum,r)=>sum+Number(r.amount||0),0);
-
-  return pageHead('Phiếu thu / chi','Theo dõi giao dịch thu tiền và chi phí tour',
+return pageHead('Phiếu thu / chi','Theo dõi giao dịch thu tiền và chi phí tour',
     `<button class="btn primary" onclick="newReceipt()">＋ Thêm giao dịch</button>`)
     +`<div class="stats-grid">
       <div class="stat-card"><span>Tổng thu</span><strong>${money(income)}</strong></div>
@@ -438,7 +424,6 @@ function receiptsHTML(){
       ])
     ));
 }
-
 function backupHTML(){
   return pageHead(
     'Sao lưu dữ liệu',
@@ -479,7 +464,6 @@ function backupHTML(){
     </div>
   `);
 }
-
 function exportData(){
   const payload={
     app:'PHAT DAT TRAVEL',
@@ -493,38 +477,30 @@ function exportData(){
     'application/json;charset=utf-8'
   );
 }
-
 function restoreBackup(){
   const input=document.getElementById('backupFile');
   const file=input?.files?.[0];
-
   if(!file){
     alert('Vui lòng chọn file JSON trước.');
     return;
   }
-
   if(!confirm('Khôi phục sẽ thay thế dữ liệu hiện tại. Bạn đã sao lưu dữ liệu hiện tại chưa?')){
     return;
   }
-
   const reader=new FileReader();
-
   reader.onload=()=>{
     try{
       const parsed=JSON.parse(reader.result);
       const incoming=parsed.data||parsed;
-
       const required=[
         'tours','guests','vehicles','rooms',
         'restaurants','itineraries','receipts'
       ];
-
       for(const key of required){
         if(!Array.isArray(incoming[key])){
           throw new Error('File thiếu danh sách hợp lệ: '+key);
         }
       }
-
       db=Object.assign(emptyData(),incoming);
       localStorage.setItem(KEY,JSON.stringify(db));
       updateStats();
@@ -534,52 +510,40 @@ function restoreBackup(){
       alert('Không thể khôi phục file này. Hãy kiểm tra file JSON sao lưu.');
     }
   };
-
   reader.onerror=()=>{
     alert('Không đọc được file. Vui lòng thử lại.');
   };
-
   reader.readAsText(file);
 }
-
 function downloadFile(content,filename,mime){
   const blob=new Blob(['\ufeff',content],{type:mime});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-
   a.href=url;
   a.download=filename;
   document.body.appendChild(a);
   a.click();
   a.remove();
-
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-
 function csvEscape(value){
   let text=String(value??'');
-
   if(/^[=+\-@]/.test(text)){
     text="'"+text;
   }
-
   return '"'+text.replace(/"/g,'""')+'"';
 }
-
 function exportCSV(){
   const type=document.getElementById('csvType')?.value;
   const rows=db[type];
-
   if(!Array.isArray(rows)){
     alert('Không tìm thấy danh sách cần xuất.');
     return;
   }
-
   if(rows.length===0){
     alert('Danh sách này chưa có dữ liệu.');
     return;
   }
-
   const keys=[...new Set(rows.flatMap(row=>Object.keys(row)))];
   const csv=[
     keys.map(csvEscape).join(','),
@@ -592,24 +556,19 @@ function exportCSV(){
       );
     }).join(','))
   ].join('\r\n');
-
   downloadFile(
     csv,
     'phat-dat-travel-'+type+'-'+today()+'.csv',
     'text/csv;charset=utf-8'
   );
 }
-
 /* ===== MODAL THÊM / SỬA ===== */
-
 function ensureModal(){
   if(document.getElementById('appModal')) return;
-
   const wrapper=document.createElement('div');
   wrapper.id='appModal';
   wrapper.className='modal-overlay';
   wrapper.style.display='none';
-
   wrapper.innerHTML=`
     <div class="modal-box">
       <div class="modal-header">
@@ -619,49 +578,36 @@ function ensureModal(){
       <div id="modalBody"></div>
     </div>
   `;
-
   document.body.appendChild(wrapper);
-
   wrapper.addEventListener('click',e=>{
     if(e.target===wrapper) closeModal();
   });
 }
-
 function showModal(title,body){
   ensureModal();
-
   document.getElementById('modalTitle').textContent=title;
   document.getElementById('modalBody').innerHTML=body;
   document.getElementById('appModal').style.display='flex';
 }
-
 function closeModal(){
   const modal=document.getElementById('appModal');
   if(modal) modal.style.display='none';
 }
-
 /* ===== TÌM KIẾM ===== */
-
 function filterTable(inputId,tableId){
   const input=document.getElementById(inputId);
   const tableEl=document.getElementById(tableId);
-
   if(!input||!tableEl) return;
-
   const query=input.value.toLowerCase().trim();
-
   tableEl.querySelectorAll('tbody tr').forEach(row=>{
     row.style.display=row.textContent.toLowerCase().includes(query)
       ?''
       :'none';
   });
 }
-
 /* ===== BẢO ĐẢM HIỂN THỊ CÁC TRANG ===== */
-
 function renderPage(page){
   currentPage=page;
-
   const renderers={
     dashboard:dashboardHTML,
     tours:toursHTML,
@@ -673,30 +619,21 @@ function renderPage(page){
     receipts:receiptsHTML,
     backup:backupHTML
   };
-
   const content=document.getElementById('mainContent');
   if(!content) return;
-
   content.innerHTML=(renderers[page]||dashboardHTML)();
-
   document.querySelectorAll('.nav button').forEach(button=>{
     button.classList.toggle('active',button.dataset.page===page);
   });
-
   const crumb=document.getElementById('crumb');
   if(crumb) crumb.textContent=pageNames[page]||page;
-
   updateStats();
 }
-
 /* ===== XỬ LÝ ESC ĐỂ ĐÓNG MODAL ===== */
-
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape') closeModal();
 });
-
 /* ===== KHỞI CHẠY WEBSITE ===== */
-
 ensureModal();
 updateStats();
 go('dashboard');
